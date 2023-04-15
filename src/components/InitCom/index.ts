@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 export default class ThreeJs {
   scene: THREE.Scene | null = null;
   camera: THREE.PerspectiveCamera | null = null;
@@ -51,6 +52,12 @@ export default class ThreeJs {
   // 创建网格模型
   setCube(): void {
     if (this.scene) {
+      // this.scene = new THREE.Scene();
+      // let loader = new GLTFLoader();
+      // loader.load("./scene.gltf", function (gltf) {
+      //   scene.add(gltf);
+      //   this.mesh = gltf.scene.getObjectByName("scene");
+      // });
       const geometry = new THREE.BoxGeometry(); //创建一个立方体几何对象Geometry
       // const material = new THREE.MeshBasicMaterial({ color: 0xff3200 }); //材质对象Material
       // const texture = new THREE.TextureLoader().load("@/assets/vue.svg"); //首先，获取到纹理
