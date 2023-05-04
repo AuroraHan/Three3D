@@ -1,5 +1,5 @@
 <template>
-  <day05></day05>
+  <day06></day06>
 </template>
 
 <script setup lang="ts">
@@ -9,6 +9,7 @@ import day02 from '@/components/0415/transfrom.vue';
 import day03 from '@/components/0415/controls.vue';
 import day04 from '@/components/0422/geometry.vue';
 import day05 from '@/components/0423/scenegraph.vue'
+import day06 from '@/components/0504/light.vue'
 </script>
 
 <style scoped></style>
