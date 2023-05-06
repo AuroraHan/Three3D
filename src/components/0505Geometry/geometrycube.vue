@@ -6,7 +6,10 @@
 <script setup lang='ts'>
 import * as THREE from "three";
 
-let camera: THREE.PerspectiveCamera, scens: THREE.Scene, renderer: THREE.WebGLRenderer, mesh: THREE.Mesh;
+let camera: THREE.PerspectiveCamera,
+    scens: THREE.Scene,
+    renderer: THREE.WebGLRenderer,
+    mesh: THREE.Mesh;
 
 function init() {
     //创建一个场景

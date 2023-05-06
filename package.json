@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/three": "^0.144.0",
-    "three": "^0.145.0",
+    "@types/three": "^0.152.0",
+    "three": "^0.152.2",
     "vue": "^3.2.37"
   },
   "devDependencies": {
