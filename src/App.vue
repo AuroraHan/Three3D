@@ -1,5 +1,5 @@
 <template>
-  <day09></day09>
+  <day10></day10>
 </template>
 
 <script setup lang="ts">
@@ -13,6 +13,7 @@ import day06 from '@/components/0504/light.vue'
 import day07 from '@/components/0505Geometry/geometrycube.vue';
 import day08 from '@/components/0506Geometry/geometry-dynamic.vue'
 import day09 from '@/components/0514LookRoom/look-room.vue'
+import day10 from '@/components/0515Texture/texture.vue'
 </script>
 
 <style scoped></style>
