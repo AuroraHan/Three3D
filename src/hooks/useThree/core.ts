@@ -18,12 +18,12 @@ class ThreeBase {
 	 * @returns camera
 	 */
 	static initCamera(element: HTMLElement) {
-		const fov = 20;
+		const fov = 75;
 		const near = 0.1;
 		const far = 2000;
 		const aspect = element.offsetWidth / element.offsetHeight;
 		const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-		camera.position.set(0, 0, 0);
+		camera.position.set(0, 0, 10);
 		return camera;
 	}
 
@@ -48,11 +48,12 @@ class ThreeBase {
 	 */
 	static initRenderer(element: HTMLElement) {
 		const renderer = new THREE.WebGLRenderer({
+			//抗锯齿
 			antialias: true,
 			alpha: true
 		});
-		// renderer.setClearColor('#000')
-		renderer.outputEncoding = THREE.sRGBEncoding;
+		// renderer.setClearColor("#000");
+		// renderer.outputEncoding = THREE.sRGBEncoding;
 		renderer.shadowMap.enabled = true;
 		renderer.setSize(element.offsetWidth, element.offsetHeight);
 		renderer.localClippingEnabled = true;
