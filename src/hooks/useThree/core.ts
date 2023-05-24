@@ -27,6 +27,11 @@ class ThreeBase {
 		return camera;
 	}
 
+	/**
+	 *
+	 * @param element
+	 * @returns
+	 */
 	static initCSSRender(element: HTMLElement) {
 		const CSSRenderer = new CSS2DRenderer();
 		CSSRenderer.setSize(element.offsetWidth, element.offsetHeight);
@@ -36,6 +41,11 @@ class ThreeBase {
 		return CSSRenderer;
 	}
 
+	/**
+	 * 初始化渲染
+	 * @param element HTMLElement
+	 * @returns renderer
+	 */
 	static initRenderer(element: HTMLElement) {
 		const renderer = new THREE.WebGLRenderer({
 			antialias: true,
@@ -50,6 +60,12 @@ class ThreeBase {
 		return renderer;
 	}
 
+	/**
+	 * 初始化控制器
+	 * @param camera
+	 * @param domElement
+	 * @returns
+	 */
 	static initControl(camera: THREE.Camera, domElement: HTMLElement) {
 		const control = new OrbitControls(camera, domElement);
 		control.target = new THREE.Vector3(0, 0, 0);
