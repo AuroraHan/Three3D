@@ -1,0 +1,36 @@
+{
+    "semi": true,
+    "singleQuote": false,
+    "jsxSingleQuote": true,
+    "trailingComma": "none",
+    "sime": false,
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "jsxBracketSameLine": false,
+    "requirePragma": false,
+    "insertPragma": false,
+    "proseWrap": "preserve",
+    "arrowParens": "always",
+    "htmlWhitespaceSensitivity": "ignore",
+    "endOfLine": "lf",
+    "quoteProps": "as-needed",
+    "vueIndentScriptAndStyle": true,
+    "embeddedLanguageFormatting": "off",
+    "singleAttributePerLine": false,
+    "printWidth": 80,
+    "tabWidth": 4,
+    "useTabs": true,
+    "overrides":
+        [
+            {
+                "files": ["*.js", "*.jsx", "*.cjs", "*.mjs"],
+                "options": { "parser": "babel" }
+            },
+            { "files": ["*.ts", "*.tsx"], "options": { "parser": "babel-ts" } },
+            { "files": ["*.json", ".prettierrc"] },
+            { "files": ["*.scss"], "options": { "parser": "scss" } },
+            { "files": ["*.scss"], "options": { "parser": "scss" } },
+            { "files": ["*.vue"], "options": { "parser": "vue" } },
+            { "files": ["*.md"], "options": { "parser": "markdown" } }
+        ]
+}
