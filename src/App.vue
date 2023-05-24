@@ -1,5 +1,5 @@
 <template>
-  <day13></day13>
+  <day14></day14>
 </template>
 
 <script setup lang="ts">
@@ -17,6 +17,7 @@ import day10 from '@/components/0515Texture/texture.vue'
 import day11 from '@/components/0518EnvTexture/eveTexture.vue'
 import day12 from '@/components/0520Shadow/lightShadow.vue'
 import day13 from '@/components/0520Example/bear.vue'
+import day14 from '@/components/0524/hooksuse.vue'
 </script>
 
 <style scoped></style>
