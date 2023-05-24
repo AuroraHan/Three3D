@@ -42,7 +42,9 @@ function useThree() {
 	return {
 		container,
 		scene,
-		camera
+		camera,
+		renderer,
+		control
 	};
 }
 

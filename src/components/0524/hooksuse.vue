@@ -6,9 +6,8 @@
 import { ref, onMounted } from 'vue';
 import * as THREE from "three";
 import useThree from '@/hooks/useThree'
-const el = ref()
 
-const { container, camera, scene } = useThree()
+const { container, camera, scene, renderer, control } = useThree()
 
 //创建物体
 onMounted(() => {
@@ -17,11 +16,14 @@ onMounted(() => {
     const cube = new THREE.Mesh(geometry, material)
     scene.value?.add(cube)
 
+    // 光线
+    const light = new THREE.AmbientLight()
+    scene.value?.add(light)
+
+    renderer.value?.render(scene.value!, camera.value!)
+    console.log(renderer.value)
 })
 
-console.log(container)
-console.log(scene)
-console.log(camera)
 
 </script>
 
