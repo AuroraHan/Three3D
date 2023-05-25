@@ -9,6 +9,7 @@ class ThreeBase {
 	 */
 	static initScene() {
 		const scene = new THREE.Scene();
+		scene.background = new THREE.Color(0x000000);
 		return scene;
 	}
 
@@ -23,7 +24,7 @@ class ThreeBase {
 		const far = 2000;
 		const aspect = element.offsetWidth / element.offsetHeight;
 		const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-		camera.position.set(0, 0, 10);
+		camera.position.set(0, 3, 3);
 		return camera;
 	}
 
@@ -52,8 +53,6 @@ class ThreeBase {
 			antialias: true,
 			alpha: true
 		});
-		// renderer.setClearColor("#000");
-		// renderer.outputEncoding = THREE.sRGBEncoding;
 		renderer.shadowMap.enabled = true;
 		renderer.setSize(element.offsetWidth, element.offsetHeight);
 		renderer.localClippingEnabled = true;
@@ -69,7 +68,6 @@ class ThreeBase {
 	 */
 	static initControl(camera: THREE.Camera, domElement: HTMLElement) {
 		const control = new OrbitControls(camera, domElement);
-		control.target = new THREE.Vector3(0, 0, 0);
 		control.update();
 		return control;
 	}

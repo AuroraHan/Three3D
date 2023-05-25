@@ -20,10 +20,18 @@ function useThree() {
 		);
 	});
 
+	/**
+	 * 进行渲染
+	 */
+	const render = () => {
+		renderer.value?.render(scene.value!, camera.value!);
+		control.value?.update();
+		requestAnimationFrame(() => render());
+	};
+
 	//监听窗口变化
 	window.addEventListener("resize", () => {
 		onWindowResize();
-		console.log("888888");
 	});
 
 	/**
@@ -44,7 +52,8 @@ function useThree() {
 		scene,
 		camera,
 		renderer,
-		control
+		control,
+		render
 	};
 }
 

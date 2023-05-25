@@ -7,21 +7,20 @@ import { ref, onMounted } from 'vue';
 import * as THREE from "three";
 import useThree from '@/hooks/useThree'
 
-const { container, camera, scene, renderer, control } = useThree()
+const { container, scene, render } = useThree()
 
 //创建物体
 onMounted(() => {
-    const geometry = new THREE.BoxGeometry(1, 1, 1)
-    const material = new THREE.MeshBasicMaterial()
+    const geometry = new THREE.BoxGeometry(2, 2, 2)
+    const material = new THREE.MeshNormalMaterial()
     const cube = new THREE.Mesh(geometry, material)
     scene.value?.add(cube)
 
     // 光线
     const light = new THREE.AmbientLight()
     scene.value?.add(light)
-
-    renderer.value?.render(scene.value!, camera.value!)
-    console.log(renderer.value)
+    render()
+    console.log(scene.value)
 })
 
 
@@ -29,8 +28,7 @@ onMounted(() => {
 
 <style scoped>
 .gxh {
-    width: 1000px;
-    height: 500px;
-    /* background-color: red; */
+    width: 100vw;
+    height: 100vh;
 }
 </style>
