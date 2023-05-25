@@ -11,7 +11,7 @@ const { container, scene, render } = useThree()
 
 //创建物体
 onMounted(() => {
-    const geometry = new THREE.BoxGeometry(2, 2, 2)
+    const geometry = new THREE.BoxGeometry(1, 1, 1)
     const material = new THREE.MeshNormalMaterial()
     const cube = new THREE.Mesh(geometry, material)
     scene.value?.add(cube)
@@ -19,8 +19,12 @@ onMounted(() => {
     // 光线
     const light = new THREE.AmbientLight()
     scene.value?.add(light)
+
+    //添加辅助线
+    const axesHelper = new THREE.AxesHelper(4);
+    scene.value?.add(axesHelper)
+
     render()
-    console.log(scene.value)
 })
 
 
