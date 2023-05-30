@@ -30,6 +30,7 @@ export default class Director extends BaseThree {
 		this.animate(); //requestAnimationFrame实现动画
 	}
 
+	//添加云层
 	addCloud() {
 		this.clouds = []; //注意
 		for (let i = 0; i < 30; i++) {
@@ -57,12 +58,14 @@ export default class Director extends BaseThree {
 	}
 
 	addLightning() {
+		// 点光源
 		const lightning = new THREE.PointLight(0x062d89, 30, 500, 1.7);
 		lightning.position.set(200, 300, 100);
 		this.scene?.add(lightning);
 		this.lightning = lightning;
 	}
 
+	//雨滴落下
 	addRainDrop() {
 		this.rainDrop = new RainDrop();
 		this.scene?.add(this.rainDrop.instance);
@@ -73,7 +76,7 @@ export default class Director extends BaseThree {
 			cloud.animate();
 		});
 
-		//lightning
+		//lightning  模拟闪电效果
 		if (Math.random() > 0.93 || this.lightning!.power > 100) {
 			if (this.lightning!.power < 100) {
 				this.lightning!.position.set(
