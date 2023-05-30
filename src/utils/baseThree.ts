@@ -1,13 +1,13 @@
 import { Scene, PerspectiveCamera, WebGLRenderer, Vector3 } from "three";
 
-class BaseThree {
-	private el: HTMLElement;
-	private scene: Scene | undefined;
-	private camera: PerspectiveCamera | undefined;
-	private renderer: WebGLRenderer | undefined;
+export default class BaseThree {
+	el: HTMLElement;
+	scene: Scene | undefined;
+	camera: PerspectiveCamera | undefined;
+	renderer: WebGLRenderer | undefined;
 
-	private w: number;
-	private h: number;
+	w: number;
+	h: number;
 
 	constructor() {
 		this.el = document.body;
@@ -41,5 +41,12 @@ class BaseThree {
 		renderer.setSize(this.w, this.h);
 		this.el.appendChild(renderer.domElement);
 		this.renderer = renderer;
+	}
+
+	//初始化
+	init() {
+		this.initScene();
+		this.initPerspectiveCamera();
+		this.initRenderer();
 	}
 }

@@ -2,7 +2,9 @@
 <template></template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import Director from "./Director";
+
+const director = new Director()
 </script>
 
 <style scoped lang="scss"></style>
