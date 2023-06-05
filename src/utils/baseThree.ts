@@ -1,10 +1,17 @@
-import { Scene, PerspectiveCamera, WebGLRenderer, Vector3 } from "three";
+import {
+	Scene,
+	PerspectiveCamera,
+	WebGLRenderer,
+	Vector3,
+	AxesHelper
+} from "three";
 
 export default class BaseThree {
 	el: HTMLElement;
 	scene: Scene | undefined;
 	camera: PerspectiveCamera | undefined;
 	renderer: WebGLRenderer | undefined;
+	axesHelper: AxesHelper | undefined;
 
 	w: number;
 	h: number;
@@ -24,7 +31,7 @@ export default class BaseThree {
 	initPerspectiveCamera() {
 		const camera = new PerspectiveCamera(75, this.w / this.h, 0.01, 1000);
 		//相机位置
-		const cameraPosition = new Vector3(0, 1, 1);
+		const cameraPosition = new Vector3(0, 1, 3);
 		camera.position.copy(cameraPosition);
 
 		//
@@ -41,6 +48,12 @@ export default class BaseThree {
 		renderer.setSize(this.w, this.h);
 		this.el.appendChild(renderer.domElement);
 		this.renderer = renderer;
+	}
+
+	//添加辅助线
+	initHelper(long = 5) {
+		this.axesHelper = new AxesHelper(long);
+		this.scene?.add(this.axesHelper);
 	}
 
 	//初始化
