@@ -9,8 +9,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import BaseThree from "@/utils/baseThree";
 
 //顶点着色器
-import vertexShader from '../../shader/base/vertex.glsl?raw';
-import fragmantShader from '../../shader/base/fragment.glsl?raw';
+import vertexShader from '../../shader/raw/vertex.glsl?raw';
+import fragmantShader from '../../shader/raw/fragment.glsl?raw';
 
 class MyPhysics extends BaseThree {
 
@@ -58,14 +58,14 @@ class MyPhysics extends BaseThree {
 
 
         //平面
-        // 创建着色器材质
-        const shaderMaterial = new THREE.ShaderMaterial({
+        // 创建原始着色器材质
+        const rawShaderMaterial = new THREE.RawShaderMaterial({
             vertexShader: vertexShader,
             fragmentShader: fragmantShader
         })
         this.floor = new THREE.Mesh(
             new THREE.PlaneGeometry(1, 1, 64, 64),
-            shaderMaterial
+            rawShaderMaterial
         )
         this.scene?.add(this.floor)
 
