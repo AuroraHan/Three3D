@@ -1,5 +1,5 @@
 <template>
-  <day21></day21>
+  <day22></day22>
 </template>
 
 <script setup lang="ts">
@@ -25,6 +25,7 @@ import day18 from '@/components/0530Camera/camera.vue'
 import day19 from '@/components/0603Point/StarPoint.vue'
 import day20 from '@/components/0605physics/physics.vue'
 import day21 from "@/components/0610Shader/shader.vue";
+import day22 from '@/components/0725Shader/waterShader.vue'
 </script>
 
 <style scoped></style>
