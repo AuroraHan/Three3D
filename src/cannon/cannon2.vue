@@ -1,4 +1,4 @@
-<!-- cannone 基本使用 -->
+<!-- cannone 滚动掉落效果 -->
 <template>
 	<div></div>
 </template>
@@ -36,14 +36,14 @@ const sphereBody = new CANNON.Body({
 world.addBody(sphereBody)
 
 //创建物理世界的平面
-const plantShape = new CANNON.Plane()
+const plantShape = new CANNON.Box(new CANNON.Vec3(5, 0.1, 5))
 const plantBody = new CANNON.Body({
-	mass: 0,
 	shape: plantShape,
 	//位置
-	position: new CANNON.Vec3(0, 0, 0)
+	position: new CANNON.Vec3(0, 0, 0),
+	type: CANNON.Body.STATIC
 })
-plantBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2)
+plantBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), 0.1)
 world.addBody(plantBody)
 //------------------------------
 
@@ -56,10 +56,10 @@ const cube = new THREE.Mesh(geometry, moterial);
 scene.add(cube);
 
 //创建Three平面
-const plantGeo = new THREE.PlaneGeometry(10, 10)
+const plantGeo = new THREE.BoxGeometry(10, 0.2, 10)
 const plantMot = new THREE.MeshBasicMaterial({ color: 0xffff00 })
 const plantMesh = new THREE.Mesh(plantGeo, plantMot)
-plantMesh.rotation.x = -Math.PI / 2
+plantMesh.rotation.x = 0.1
 scene.add(plantMesh);
 
 //渲染器
