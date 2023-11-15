@@ -1,5 +1,5 @@
 <template>
-   <day26></day26>
+   <day27></day27>
 </template>
 
 <script setup lang="ts">
@@ -29,7 +29,8 @@ import day22 from "@/components/0725Shader/waterShader.vue";
 import day23 from "@/cannon/cannon1.vue";
 import day24 from "@/cannon/cannon2.vue";
 import day25 from '@/demo/clippingPlanes.vue';
-import day26 from '@/demo/interactiveRaycastingPoints.vue'
+import day26 from '@/demo/interactiveRaycastingPoints.vue';
+import day27 from '@/components/1114Raycaster/raycaster.vue'
 </script>
 
 <style scoped></style>

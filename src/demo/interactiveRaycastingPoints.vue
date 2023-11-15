@@ -15,11 +15,22 @@ class InteractiveRaycastingPoints extends BaseThree {
     width = 80;
     length = 160;
     pointclouds = [] as any[]
+    threshold = 0.1;
+    intersection = null as any;
+    toggle = 0;
+    spheresIndex = 0;
 
     spheres = [] as THREE.Mesh[];
 
+    //鼠标移动的点
+    pointer = new THREE.Vector2();
+
+    //根据Y轴旋转设置
+    rotateY = new THREE.Matrix4().makeRotationY(0.005);
+
     clock: THREE.Clock
     controls: OrbitControls | undefined;
+    raycaster: THREE.Raycaster | undefined
 
     constructor() {
         super()
@@ -39,6 +50,7 @@ class InteractiveRaycastingPoints extends BaseThree {
         this.initRenderer()
         this.pointsInit()
         this.animate()
+        this.myRenderer()
         this.initControls()
     }
 
@@ -83,6 +95,42 @@ class InteractiveRaycastingPoints extends BaseThree {
             this.spheres.push(sphere);
 
         }
+
+        //
+        this.raycaster = new THREE.Raycaster();
+        this.raycaster.params.Points!.threshold = this.threshold;
+
+        document.addEventListener('pointermove', this.onPointerMove);
+    }
+
+    myRenderer() {
+        this.camera?.applyMatrix4(this.rotateY)
+        this.camera?.updateMatrixWorld()
+
+        this.raycaster?.setFromCamera(this.pointer, this.camera!);
+
+        const intersections = this.raycaster?.intersectObjects(this.pointclouds, false);
+        this.intersection = (intersections!.length) > 0 ? intersections![0] : null;
+
+        if (this.toggle > 0.02 && this.intersection !== null) {
+
+            this.spheres[this.spheresIndex].position.copy(this.intersection.point);
+            this.spheres[this.spheresIndex].scale.set(1, 1, 1);
+            this.spheresIndex = (this.spheresIndex + 1) % this.spheres.length;
+
+            this.toggle = 0;
+        }
+        for (let i = 0; i < this.spheres.length; i++) {
+
+            const sphere = this.spheres[i];
+            sphere.scale.multiplyScalar(0.98);
+            sphere.scale.clampScalar(0.01, 1);
+
+        }
+
+        this.toggle += this.clock.getDelta();
+
+        this.renderer?.render(this.scene!, this.camera!);
     }
 
     //动画
@@ -90,8 +138,16 @@ class InteractiveRaycastingPoints extends BaseThree {
 
         requestAnimationFrame(this.animate.bind(this));
 
-        this.renderer?.render(this.scene!, this.camera!);
+        // this.renderer?.render(this.scene!, this.camera!);
+        this.myRenderer()
 
+    }
+
+    //鼠标移动生成的点
+    onPointerMove(event: { clientX: number; clientY: number; }) {
+
+        this.pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+        this.pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
     }
 
