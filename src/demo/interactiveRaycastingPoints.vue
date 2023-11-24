@@ -100,7 +100,7 @@ class InteractiveRaycastingPoints extends BaseThree {
         this.raycaster = new THREE.Raycaster();
         this.raycaster.params.Points!.threshold = this.threshold;
 
-        document.addEventListener('pointermove', this.onPointerMove);
+        document.addEventListener('pointermove', this.onPointerMove.bind(this));
     }
 
     myRenderer() {

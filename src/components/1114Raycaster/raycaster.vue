@@ -10,7 +10,7 @@ import BaseThree from '../../utils/baseThree';
 
 class Raycaster extends BaseThree {
 
-    raycaster = new THREE.Raycaster();
+    raycaster = new THREE.Raycaster(new THREE.Vector3(0, 1, 3));
     pointer: THREE.Vector2;
     static _this: any;
 
@@ -23,7 +23,7 @@ class Raycaster extends BaseThree {
         this.initRenderer()
         this.animate()
         Raycaster._this = this
-        window.addEventListener('pointermove', this.onPointerMove);
+        window.addEventListener('pointermove', this.onPointerMove.bind(this));
     }
 
 
@@ -31,12 +31,10 @@ class Raycaster extends BaseThree {
 
         //使用相机和指针位置更新拾取光线 -通过摄像机和鼠标位置更新射线
         this.raycaster.setFromCamera(this.pointer, this.camera!)
-
         //计算与拾取射线相交的对象 -  计算物体和射线的焦点
-        const intersects = this.raycaster.intersectObjects(this.scene!.children, true);
+        const intersects = this.raycaster.intersectObjects(this.scene?.children!);
 
         console.log(intersects);
-        debugger
 
         for (let i = 0; i < intersects.length; i++) {
 
@@ -69,9 +67,7 @@ class Raycaster extends BaseThree {
         // this.pointer.setX((event.clientX / window.innerWidth) * 2 - 1);
         // this.pointer.setY(- (event.clientY / window.innerHeight) * 2 + 1);
         Raycaster._this.pointer.x = (event.clientX / window.innerWidth) * 2 - 1
-        console.log(Raycaster._this.pointer.x);
-
-        // Raycaster._this.pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
+        Raycaster._this.pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
     }
 
 }

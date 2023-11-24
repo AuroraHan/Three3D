@@ -1,5 +1,5 @@
 <template>
-   <day27></day27>
+   <day26></day26>
 </template>
 
 <script setup lang="ts">
