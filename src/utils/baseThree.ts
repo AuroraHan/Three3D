@@ -44,7 +44,8 @@ export default class BaseThree {
 
 	//初始化渲染器 https://juejin.cn/post/6940542710709223432#heading-7
 	initRenderer() {
-		const renderer = new WebGLRenderer();
+		const renderer = new WebGLRenderer({ antialias: true });
+		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(this.w, this.h);
 		this.el.appendChild(renderer.domElement);
 		this.renderer = renderer;

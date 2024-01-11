@@ -21,6 +21,8 @@ function init() {
 
     //创建贴图
     const texture = new THREE.TextureLoader().load('../../../public/crate.gif')
+    console.log('texture', texture);
+
     // texture
 
     //创建物体
